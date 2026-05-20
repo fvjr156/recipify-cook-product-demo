@@ -1,0 +1,30 @@
+[
+  {
+    "id": "creamy-pasta",
+    "name": "Creamy Pasta Carbonara",
+    "time": "30 min",
+    "difficulty": "Easy",
+    "img": "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    "id": "garlic-shrimp",
+    "name": "Garlic Butter Shrimp",
+    "time": "20 min",
+    "difficulty": "Easy",
+    "img": "https://images.unsplash.com/photo-1625938146369-adc83368bda7?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    "id": "veggie-fry",
+    "name": "Veggie Stir Fry",
+    "time": "25 min",
+    "difficulty": "Easy",
+    "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80"
+  },
+  {
+    "id": "baked-pasta",
+    "name": "Cheesy Baked Pasta",
+    "time": "45 min",
+    "difficulty": "Med",
+    "img": "https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=300&q=80"
+  }
+]

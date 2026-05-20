@@ -1,65 +1,99 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useRouter } from "next/navigation";
+import { useTheme } from "@/context/ThemeContext";
+import { ChefHat, Sun, Moon, BatteryFull, Wifi, Signal } from "lucide-react";
+
+export default function Onboarding() {
+  const router = useRouter();
+  const { theme, toggleTheme } = useTheme();
+
+  // Dynamic Theme Tokens
+  const isDark = theme === "dark";
+  const bgShell = isDark ? "bg-[#121412] text-[#E2E3DE]" : "bg-[#F7FBF4] text-[#191C19]";
+  const borderShell = isDark ? "border-[#2E312E]" : "border-[#191C19]";
+  const bgIcon = isDark ? "bg-[#222622] text-[#B8E6B9]" : "bg-[#D1E8D1] text-[#386B3B]";
+  const textSub = isDark ? "text-[#A4A9A4]" : "text-[#414941]";
+  const btnPrimary = isDark ? "bg-[#386B3B] text-white" : "bg-[#191C19] text-white";
+  const btnSecondary = isDark ? "bg-[#222622] border-[#2E312E] text-[#E2E3DE]" : "bg-white border-gray-200 text-[#191C19]";
+  const bgGrid = isDark ? "bg-[#1C1F1C]" : "bg-[#E8F3E8]";
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-200 font-sans transition-colors duration-300">
+      <div className={`relative flex h-[800px] w-full max-w-[375px] flex-col overflow-hidden rounded-[3rem] shadow-2xl border-[8px] transition-all duration-300 ${bgShell} ${borderShell}`}>
+        
+        {/* Hardware Status Bar */}
+        <div className="absolute top-0 z-50 flex w-full items-center justify-between px-6 pt-3 text-[12px] font-bold transition-colors duration-300">
+          <span>9:41</span>
+          <div className={`h-6 w-24 rounded-full ${isDark ? "bg-[#2E312E]" : "bg-[#191C19]"}`} />
+          <div className="flex items-center gap-1.5">
+            <Signal size={14} /><Wifi size={14} /><BatteryFull size={16} />
+          </div>
+        </div>
+
+        {/* 1. THEME TOGGLE (Top Right) */}
+        <div className="absolute top-12 right-6 z-50">
+          <button 
+            onClick={toggleTheme} 
+            className={`flex h-10 w-10 items-center justify-center rounded-full transition-all active:scale-90 ${isDark ? "bg-[#222622] text-yellow-400" : "bg-[#D1E8D1] text-[#191C19]"}`}
+          >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
+
+        {/* Main Onboarding Content */}
+        <div className="flex flex-1 flex-col items-center justify-center px-10 text-center pt-20">
+          {/* M3 Styled Branding */}
+          <div className={`mb-8 flex h-20 w-20 items-center justify-center rounded-[2rem] shadow-sm transition-colors duration-300 ${bgIcon}`}>
+            <ChefHat size={40} />
+          </div>
+          
+          <h1 className="text-4xl font-extrabold tracking-tight leading-tight">
+            Recipify<span className="opacity-40">Cook</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          
+          <div className="mt-12 space-y-4">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight">
+              Discover & Cook <br /> Amazing Recipes
+            </h2>
+            <p className={`text-lg font-medium leading-relaxed ${textSub}`}>
+              The smartest way to <br /> find your next favorite meal.
+            </p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="mt-16 w-full space-y-4">
+            <button 
+              onClick={() => router.push("/feed")}
+              className={`h-14 w-full rounded-full font-bold text-sm shadow-md transition-all active:scale-95 ${btnPrimary}`}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Get Started
+            </button>
+            <button 
+              onClick={() => router.push("/feed")}
+              className={`h-14 w-full rounded-full border font-bold text-sm transition-all active:scale-95 ${btnSecondary}`}
             >
-              Learning
-            </a>{" "}
-            center.
+              Log In
+            </button>
+          </div>
+
+          <p className={`mt-8 text-xs font-bold transition-colors ${textSub}`}>
+            Don't have an account? <span className={`underline cursor-pointer ${isDark ? "text-white" : "text-[#386B3B]"}`}>Sign Up</span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Decorative Hardware Elements (Bottom Home Indicator) */}
+        <div className="relative h-20 w-full mt-auto">
+           {/* Faux Gallery Mesh Background */}
+           <div className="absolute inset-x-0 bottom-0 grid grid-cols-4 gap-3 p-4 opacity-20">
+              <div className={`h-24 rounded-2xl ${bgGrid}`} />
+              <div className={`h-24 rounded-2xl ${bgGrid}`} />
+              <div className={`h-24 rounded-2xl ${bgGrid}`} />
+              <div className={`h-24 rounded-2xl ${bgGrid}`} />
+           </div>
+           <div className={`absolute bottom-2 left-1/2 -translate-x-1/2 h-1.5 w-24 rounded-full transition-colors ${isDark ? "bg-white/20" : "bg-black/10"}`} />
         </div>
-      </main>
+      </div>
     </div>
   );
 }
