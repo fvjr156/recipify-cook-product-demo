@@ -58,3 +58,12 @@ Ensure you have [Node.js](https://nodejs.org/) installed on your machine, then r
    ```bash
    git clone [https://github.com/your-username/recipify-cook.git](https://github.com/your-username/recipify-cook.git)
    cd recipify-cook
+   ```
+
+2. **Install and run:**
+    ```bash
+    npm install
+    npm run dev
+    ```
+
+3. **Go to `http://localhost:3000`**
