@@ -1,4 +1,4 @@
-# RecipifyCook — Mobile UI Prototype 🥑
+# RecipifyCook — Mobile UI Prototype 
 
 RecipifyCook is a high-fidelity mobile application user interface prototype built with **Next.js 14 (App Router)** and **Tailwind CSS**. It showcases an elegant, intuitive recipe exploration app featuring Material Design 3 inspired elements, a simulated fridge camera scan experience, a structured shopping checklist module, and a global system-wide theme context framework.
 
