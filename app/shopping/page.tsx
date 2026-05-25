@@ -31,7 +31,7 @@ export default function ShoppingListPage() {
         {/* Status Bar */}
         <div className={`absolute top-0 z-50 flex w-full items-center justify-between px-6 pt-3 text-[12px] font-bold ${isDark ? "bg-[#121412]/80" : "bg-[#F7FBF4]/80"} backdrop-blur-md`}>
           <span>9:41</span>
-          <div className={`h-6 w-24 rounded-full ${isDark ? "bg-[#2E312E]" : "bg-[#191C19]"}`} />
+          <div className={`absolute h-6 w-24 left-1/2 -translate-x-1/2 rounded-full ${isDark ? "bg-[#2E312E]" : "bg-[#191C19]"}`} />
           <div className="flex items-center gap-1.5">
             <Signal size={14} /><Wifi size={14} /><BatteryFull size={16} />
           </div>

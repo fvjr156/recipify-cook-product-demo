@@ -1,0 +1,19 @@
+services:
+  nextjs-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: recipify-local-image:local
+    container_name: recipify-frontend
+    ports:
+      - "6397:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+    networks:
+      - recipify-network
+    restart: unless-stopped
+
+networks:
+  recipify-network:
+    external: true
