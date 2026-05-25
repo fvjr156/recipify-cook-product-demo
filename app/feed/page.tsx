@@ -269,12 +269,6 @@ export default function HomeFeed() {
                 <div className="absolute bottom-0 left-0 h-8 w-8 border-b-4 border-l-4 border-white rounded-bl-xl" />
                 <div className="absolute bottom-0 right-0 h-8 w-8 border-b-4 border-r-4 border-white rounded-br-xl" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-white/80 shadow-[0_0_15px_white] animate-scan" />
-                <div className="absolute top-10 left-4 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-md border border-white/20">
-                  Eggs
-                </div>
-                <div className="absolute bottom-20 right-4 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-md border border-white/20">
-                  Milk
-                </div>
               </div>
               <button
                 onClick={() => setIsScanning(false)}
